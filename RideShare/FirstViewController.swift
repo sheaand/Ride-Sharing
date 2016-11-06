@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController {
 
@@ -18,6 +19,15 @@ class FirstViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func logOut(sender: AnyObject) {
+        let firebaseAuth = FIRAuth.auth()
+        do{
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError{
+            print("Error signing out: \(signOutError.localizedDescription)")
+        }
     }
 
 
